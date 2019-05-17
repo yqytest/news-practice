@@ -1,0 +1,23 @@
+<!--pages/article/article.wxml-->
+<!--引入自定义导航栏组件-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+
+<!--页面内容-->
+<view class="article-title" style="margin-top: {{navbarData.height}}px;">{{title}}</view>
+<view class="article-info">
+  <view class="article-source">{{source}}</view>
+  <view class="article-date">{{date}}</view>
+  <view class="article-read">{{readCount}}</view>
+</view>
+<view class="content-list">
+  <view class="content-item" wx:for="{{content}}" wx:key="item" id="{{item.id}}">
+    <!--如果是p就显示文字-->
+    <view wx:if="{{item.type=='p'}}">
+        <view class="content-text">{{item.text}}</view>
+    </view>
+    <!--如果是image就显示图片-->
+    <view wx:elif="{{item.type=='image'}}">
+        <image class="content-image" src="{{item.src}}" mode="widthFix"></image>
+    </view>
+  </view>
+</view>

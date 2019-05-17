@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<!--引入自定义导航栏组件-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+
+<!--页面内容-->
+<!--新闻类别-->
+<view class="category-list" style="margin-top: {{navbarData.height}}px;">
+  <view class="category-item {{item.code==selectedCategory?'active':''}}" wx:for="{{category}}" wx:key="item" id="{{item.code}}" bindtap="onTapNewsCategory">
+    <view class="category-name">{{item.name}}</view>
+    <view class="category-line"></view>
+  </view>
+</view>
+<!--热门新闻（只有一个，想做成轮播的效果，先用list）-->
+<scroll-view scroll-x class="hot-scroll">
+  <view class="hot-list">
+    <view class="hot-item" wx:for="{{hotList}}" wx:key="item" id="{{item.id}}" bindtap="onTapNewsArticle">
+      <view class="hot-title-wrapper">
+        <view class="hot-title">{{item.title}}</view>
+        <view class="hot-info">
+          <view class="hot-source">{{item.source}}</view>
+          <view class="hot-date">{{item.date}}</view>
+        </view>
+      </view>
+      <image class="hot-photo" src="{{item.firstImage}}" mode="widthFix"></image>
+      <view class="hot-label">热门</view>
+    </view>
+  </view>
+</scroll-view>
+<!--新闻列表-->
+<view class="news-list">
+  <view class="news-item" wx:for="{{newsList}}" wx:key="item" id="{{item.id}}" bindtap="onTapNewsArticle">
+    <view class="news-title-wrapper">
+      <view class="news-title">{{item.title}}</view>
+      <view class="news-info">
+        <view class="news-source">{{item.source}}</view>
+        <view class="news-date">{{item.date}}</view>
+      </view>
+    </view>
+    <view class="photo-wrapper">
+      <image class="news-photo" src="{{item.firstImage}}"></image>
+    </view>
+  </view>
+</view>

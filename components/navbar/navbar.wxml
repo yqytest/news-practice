@@ -1,0 +1,16 @@
+<!--components/navbar/navbar.wxml-->
+<!--导航栏自定义-->
+<view class="nav-wrapper {{navbarData.isIndex?'nav-bg1':'nav-bg2'}}" style='height: {{height}}px;'>
+  <view class='nav-title' style='line-height: {{height + height/2}}px;'>
+    <!--如果是首页就显示logo-->
+    <view wx:if="{{navbarData.isIndex}}" class="image-wrapper">
+      <image src='/images/logo.jpg'  mode='aspectFill' class='logo'></image>
+    </view>
+    <!--如果是详情页就显示返回按钮-->
+    <view wx:else class="image-wrapper">
+      <image src='/images/left-arrow.jpg' mode='aspectFill' class='logo opacity60' bindtap='backToPrev'></image>
+    </view>
+    <!--标题文字-->
+    <view class="title-text {{navbarData.isIndex?'title-color1':'title-color2 opacity60'}}">{{navbarData.title}}</view>
+  </view>
+</view>
